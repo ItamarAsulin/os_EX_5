@@ -2,6 +2,9 @@
 #include <cmath>
 // #include <time.h>
 #include <unistd.h>
+#include <sstream>
+#include <chrono>
+#include <thread>
 #include "ThreadSafeQueue.hpp"
 
 int isPrime(unsigned int num){
@@ -74,4 +77,17 @@ void addTwo(TSQueue *targetQueue, void* voidNum){
     }
     *numPtr = *numPtr + 2;
     std::cout << *numPtr << std::endl;
+}
+std::string getCurrentOutput() {
+    std::ostringstream output;
+    std::streambuf* oldCoutBuf = std::cout.rdbuf();
+    std::cout.rdbuf(output.rdbuf());
+    
+    // Print the output you want to capture
+    std::cout << "Line 1" << std::endl;
+    std::cout << "Line 2" << std::endl;
+    std::cout << "Line 3" << std::endl;
+    
+    std::cout.rdbuf(oldCoutBuf);
+    return output.str();
 }

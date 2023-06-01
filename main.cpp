@@ -22,5 +22,20 @@ int main(int argc, char* argv[]){
     
 
     pipeline[0]->queue->push(new int(n));
-    sleep(3);
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    std::string lastOutput = getCurrentOutput();
+    while (true) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        std::string currentOutput = getCurrentOutput();
+        if (currentOutput == lastOutput) {
+            // Output remains the same, so exit the loop
+            break;
+        } else {
+            // Output has changed, update the lastOutput and continue the loop
+            lastOutput = currentOutput;
+        }
+        // Wait for a short duration before checking again
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
 }
