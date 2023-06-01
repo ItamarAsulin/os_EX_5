@@ -7,6 +7,8 @@
 #include <thread>
 #include "ThreadSafeQueue.hpp"
 
+int counter = 0;
+
 int isPrime(unsigned int num){
     if (num % 2 == 0){
         return 0;
@@ -77,17 +79,5 @@ void addTwo(TSQueue *targetQueue, void* voidNum){
     }
     *numPtr = *numPtr + 2;
     std::cout << *numPtr << std::endl;
-}
-std::string getCurrentOutput() {
-    std::ostringstream output;
-    std::streambuf* oldCoutBuf = std::cout.rdbuf();
-    std::cout.rdbuf(output.rdbuf());
-    
-    // Print the output you want to capture
-    std::cout << "Line 1" << std::endl;
-    std::cout << "Line 2" << std::endl;
-    std::cout << "Line 3" << std::endl;
-    
-    std::cout.rdbuf(oldCoutBuf);
-    return output.str();
+    counter++;
 }
