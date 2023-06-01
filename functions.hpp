@@ -27,10 +27,7 @@ void generateNumberAndPass(TSQueue *targetQueue, void *voidN){
     int numToGenerate = *n;
     int **generatedNumbers = new int*[numToGenerate];
     for (int i = 0; i < numToGenerate; i++){
-        std::string firstHalf = std::to_string(rand() % 900 + 100);
-        std::string secondtHalf = std::to_string(rand() % 900 + 100);
-        std::string generatedNumberStr = firstHalf + secondtHalf;
-        int generatedNumber = std::stoi(generatedNumberStr);
+        int generatedNumber = std::rand() % 900000 + 100000;
         generatedNumbers[i] = new int(generatedNumber);
     }
     for (int i = 0; i < numToGenerate; i++){
