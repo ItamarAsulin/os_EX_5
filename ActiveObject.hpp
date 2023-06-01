@@ -19,10 +19,9 @@ class ActiveObject{
         // static void printTest();
         // static void run();
 };
+void busyLoop(ActiveObject *object);
+ActiveObject *CreateActiveObject(FunctionPtrType targetFunc);
+TSQueue * getQueue(ActiveObject *object);
+void stop(ActiveObject *object);
 
-// namespace os{
-//     ActiveObject *CreateActiveObject(FunctionPtrType targetFunc);
-//     TSQueue * getQueue(ActiveObject *object);
-//     void stop(ActiveObject *object);
-// }
 #endif
